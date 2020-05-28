@@ -4,7 +4,7 @@
   "builds": [{ "src": "*.js", "use": "@now/node" }],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "(.*)",
       "methods": ["GET", "POST", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Origin": "*",
@@ -15,7 +15,7 @@
       "continue": true
     },
     {
-      "src": "/api/(.*)",
+      "src": "(.*)",
       "methods": ["POST"],
       "dest": "routes.js"
     }
