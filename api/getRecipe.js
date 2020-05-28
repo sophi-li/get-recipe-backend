@@ -1,16 +1,7 @@
-const express = require('express')
-const cors = require('cors')
 const jsonld = require('jsonld')
 const { chromium } = require('playwright')
 
-const router = express.Router()
-
-router.use(express.urlencoded({ extended: true }))
-
-// enable pre-flight request for POST request
-router.options('/create', cors())
-
-router.post('/create', cors(), async (req, res) => {
+module.exports = async (req, res) => {
   console.log('url: ', req.body.url)
 
   if (!req.body.url) {
@@ -42,6 +33,4 @@ router.post('/create', cors(), async (req, res) => {
 
   await browser.close()
   res.json(ingredients)
-})
-
-module.exports = router
+}
